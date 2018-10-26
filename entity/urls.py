@@ -1,6 +1,6 @@
-from django.conf.urls import url 
+from django.conf.urls import url
 
-from .views import EntitiesList, EntityPartialUpdateCni, EntityPartialUpdateStatus, EntityCorrespondQueryList, EntityDistributionQueryList, EntityDetail, sendSms
+from .views import EntitiesList, EntityPartialUpdateCni, EntityPartialUpdateStatus, EntityCorrespondQueryList, EntityDistributionQueryList, EntityDetail, sendMsg
 
 
 urlpatterns = [
@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^entities/distribution/q/(?P<search>)$', EntityDistributionQueryList.as_view()),
     url(r'^entities/detail/$', EntityDetail.as_view()),
 
-    url(r'^entities/update/sendSms/(?P<id>\d+)/$', sendSms),
+    url(r'^entities/sendsms/$', sendMsg),
 ]

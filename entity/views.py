@@ -1,7 +1,7 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, filters
+
 
 
 from .models import PeopleEntity
@@ -65,7 +65,7 @@ class EntitiesList(APIView):
 
 
 class EntityDetail(APIView):
-   
+
     def get(self, request, format=None):
         nberRecep = self.request.query_params.get('nberRecep', None)
         try:
@@ -100,5 +100,99 @@ class EntityCorrespondQueryList(ListAPIView):
         return queryset
 
 
-def sendSms(request, id):
-    return 'OK'
+from entity.sms import Sms
+import requests
+import json
+
+
+
+
+def sendMsg(request):
+    # newSms = Sms.Sms()
+
+    # sender = 'tel:+237693458540'
+    # receiver = 'tel:+237693458540'
+    # message = 'Bonjour, votre carte nationale d\'identité est disponible au commissariat du 11e arrondissement à Odza. \n\n@Id-found Cameroun - 2018'
+
+    # newSms.sendSMS(sender, receiver, message, senderName='DGSN')
+
+    ###############################################
+
+    ##   ETECH KEYS NG - SMS Gateway Python example   ##
+
+    ###############################################
+
+
+
+    import urllib.parse as parser
+    import urllib.request as reque
+
+
+
+    ###############################################
+
+    ###            ETECH KEYS NG informations        ###
+
+    ###############################################
+
+
+
+    host = "https://sms.etech-keys.com/ss/api.php?"
+
+    login = "693458540"
+
+    password = "et9t459"
+
+    sender_id = "stephane"
+
+    destinataire = "693458540"
+
+    message_body = "Hello World from Python"
+
+
+
+    ###############################################
+
+    ### Putting together the final HTTP Request ###
+
+    ###############################################
+
+
+
+    http_req = host
+
+    http_req += "login="
+
+    http_req += parser.quote(login)
+
+    http_req += "&password="
+
+    http_req += parser.quote(password)
+
+    http_req += "&sender_id="
+
+    http_req += parser.quote(sender_id)
+
+    http_req += "&destinataire="
+
+    http_req += parser.quote(destinataire)
+
+    http_req += "&message="
+
+    http_req += parser.quote(message_body)
+
+
+
+    ################################################
+
+    ####            Sending the message          ###
+
+    ################################################
+
+    get = reque.urlopen(http_req)
+
+    req = get.read()
+
+    get.close()
+
+    return req

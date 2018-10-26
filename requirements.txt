@@ -7,11 +7,9 @@ django-allauth==0.31.0
 django-analytical==2.2.2
 django-controlcenter==0.2.1
 django-cors-headers==2.2.0
-django-counter-field-py3==0.0.4
 django-crispy-forms==1.6.1
 django-filter==1.0.0
 django-hitcount==1.2.2
-django-model-changes-py3==0.15.1
 django-pkgconf==0.2.0
 django-profiles==0.2
 django-registration==2.2

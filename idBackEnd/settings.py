@@ -10,7 +10,7 @@ SECRET_KEY = '44y_z@t1w)*!m4jsv(6uv6o-ks76u2@#=@=^51gk63&53^+zyb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # REST_FRAMEWORK = {
